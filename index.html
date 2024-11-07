@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>roni Web Site</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: #000; /* Cor de fundo preta */
+}
+
+.snow-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.snow-flake {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: #fff; /* Cor branca */
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
+
+/* Estilos originais */
+body {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background-image: url("https://i.ibb.co/K24GHhH/IMG-20240206-WA0005.jpg"); /* Set the background image */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.btn {
+  --color: #8a2be2; /* Alterado para violeta escuro */
+  --color2: rgb(10, 25, 30);
+  width: 200px; /* Set a fixed width for the buttons */
+  padding: 0.8em 1.75em;
+  background-color: transparent;
+  border-radius: 6px;
+  border: .3px solid var(--color);
+  transition: .5s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+  font-weight: 300;
+  font-size: 17px;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  text-transform: uppercase;
+  color: white; /* Alterado para branco */
+  margin-bottom: 10px; /* Add margin to separate buttons */
+}
+
+.btn::after, .btn::before {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: skew(90deg) translate(-50%, -50%);
+  position: absolute;
+  inset: 50%;
+  left: 25%;
+  z-index: -1;
+  transition: .5s ease-out;
+  background-color: var(--color);
+}
+
+.btn::before {
+  top: -50%;
+  left: -25%;
+  transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.btn:hover::before {
+  transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.btn:hover::after {
+  transform: skew(45deg) translate(-50%, -50%);
+}
+
+.btn:hover {
+  color: var(--color2);
+}
+
+.btn:active {
+  filter: brightness(.7);
+  transform: scale(.98);
+}
+
+.title {
+  font-family: 'Raleway', cursive;
+  font-size: 3em;
+  color: #8a2be2; /* Mudana para violeta escuro */
+  text-align: center;
+  margin-top: 50px;
+  animation: titleAnimation 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleAnimation {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.icon-animation {
+  color: #8a2be2; /* Violeta escuro */
+  font-size: 24px;
+  margin-bottom: 10px;
+  animation: iconRotate 2s linear infinite;
+}
+
+@keyframes iconRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>
+</head>
+<body onload="playAudio()">
+  <audio id="audioPlayer" loop>
+    <source src="https://transfer.sh/Snp0Le4pqQ/VenomWebSite.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    function playAudio() {
+      var audio = document.getElementById("audioPlayer");
+      audio.play();
+    }
+  </script>
+</body>
+
+<div class="snow-background"></div>
+<i class="fas fa-code icon-animation"></i> 
+<h1 class="title">roni Web Site</h1>
+
+<button onclick="window.open(`/VenomSpam`)" class="btn">Spam nomor</button>
+<button onclick="window.open(`/BanVenom`)" class="btn">Mtodos ban</button>
+<button onclick="window.open(`/BotsVenom`)" class="btn">Bots WhatsApp</button>
+<button onclick="window.open(`/EmailsVenom`)" class="btn">Gerador De E-mail</button>
+<button onclick="window.open(`/DadosVenom`)" class="btn">Gerador De Pessoa</button>
+<button onclick="window.open(`/FontesVenom`)" class="btn">Modificar Fonte</button>
+<script>
+var audio = document.getElementById("audioPlayer");
+
+// Funo para iniciar a reproduo do udio
+function playAudio() {
+  audio.play();
+  // Remover o evento de clique aps a reproduo iniciar para evitar mltiplas reprodues
+  document.body.removeEventListener("click", playAudio);
+}
+
+// Criar flocos de neve continuamente
+for (let i = 0; i < 200; i++) {
+  createSnowFlake();
+}
+
+// Funo para criar um floco de neve
+function createSnowFlake() {
+  const snowFlake = document.createElement("div");
+  snowFlake.classList.add("snow-flake");
+  snowFlake.style.left = Math.random() * window.innerWidth + "px";
+  snowFlake.style.top = Math.random() * window.innerHeight + "px"; // Posio inicial aleatria na tela
+  snowFlake.style.animationDuration = (Math.random() * 5 + 3) + "s"; // Durao da animao varivel
+  document.body.appendChild(snowFlake);
+
+  // Animao da queda do floco de neve
+  setTimeout(function () {
+    snowFlake.style.top = window.innerHeight + "px";
+  }, 10);
+
+  // Remover o floco de neve aps a animao
+  setTimeout(function () {
+    snowFlake.remove();
+    // Criar um novo floco de neve aps a remoo para manter a animao contnua
+    createSnowFlake();
+  }, 8000);
+}
+</script>
+  
+<a href="https://www.youtube.com/@RONITHE2004" target="_blank" style="color: #8A2BE2;">
+<i class="fab fa-youtube icon-animation"></i> - roni bot whatsapp
+</a>
+<a href="https://api.whatsapp.com/send?phone=6283871344005" target="_blank" style="color: #8A2BE2;">
+<i class="fab fa-whatsapp icon-animation"></i> - <span style="color: #8A2BE2;">Contato No WhatsApp</span>
+</a>
+<a href="https://t.me/dickwhatsapp" target="_blank" style="color: #8A2BE2;">
+<i class="fab fa-telegram icon-animation"></i> - <span style="color: #8A2BE2;">Grupo Do Telegram</span>
+</a>
+<a href="https://www.instagram.com/roni_hz60" target="_blank" style="color: #8A2BE2;">
+<i class="fab fa-instagram icon-animation"></i> - <span style="color: #8A2BE2;">Instagram</span>
+</a>
+
+</body>
+</html>
